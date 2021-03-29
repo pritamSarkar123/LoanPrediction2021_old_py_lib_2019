@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %} {% load staticfiles %}
+<div class="jumbotron jumbotron-fluid" align="center">
+  <div class="container pt-3">
+    {% if loan_status > 1 %}
+    <img
+      src="{% static 'good.png' %}"
+      height="100"
+      width="100"
+      class="d-inline-block align-top"
+    /><br />
+    <h1 class="display-4">You are eligable for the loan</h1>
+    {% else %}
+    <img
+      src="{% static 'face.png' %}"
+      height="100"
+      width="100"
+      class="d-inline-block align-top"
+    /><br />
+    <h1 class="display-4">You are not eligable for the loan</h1>
+    {% endif %}
+    <a href="{% url 'approvals' %}">
+      <input class="btn btn-primary" type="submit" value="Recheck!" />
+    </a>
+  </div>
+</div>
+{% endblock %}

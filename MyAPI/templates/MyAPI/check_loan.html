@@ -1,0 +1,245 @@
+{% extends 'base.html' %} {% block content %} {% load staticfiles %}
+<html>
+  <div class="container">
+    <body class="text-center">
+      {% if error %} {{error}} {% endif %} {% if loan_status %} {{loan_status}}
+      {% endif %}
+
+      <br />
+      <div class="container">
+        <h1 class="h3 mb-3 font-weight-normal">Info</h1>
+        <img
+          src="{% static 'info.png' %}"
+          height="30"
+          width="30"
+          class="d-inline-block align-top"
+        />
+        <form
+          method="POST"
+          action="{% url 'approvals' %}"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token%}
+          <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              name="firstname"
+              placeholder="First Name"
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              name="lastname"
+              placeholder="Last Name"
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <label for="dependents">Dependents</label>
+            <input
+              type="text"
+              class="form-control"
+              id="dependents"
+              name="dependents"
+              placeholder="Dependents"
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <label for="applicantincome">Applicant Income</label>
+            <input
+              type="text"
+              class="form-control"
+              id="applicantincome"
+              name="applicantincome"
+              placeholder="Applicant Inome in$"
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <label for="coapplicantincome">Coapplicant Income</label>
+            <input
+              type="text"
+              class="form-control"
+              id="coapplicantincome"
+              name="coapplicantincome"
+              placeholder="Coapplicant Income in$"
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <label for="loanamt">Loan Amount</label>
+            <input
+              type="text"
+              class="form-control"
+              id="loanamt"
+              name="loanamt"
+              placeholder="Loan Amount in$"
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <label for="credithistory">Credit History</label>
+            <input
+              type="text"
+              class="form-control"
+              id="credithistory"
+              name="credithistory"
+              placeholder="Credit History"
+              autofocus
+            />
+          </div>
+          <div class="form-group">
+            <label for="loanterm">Loan Term</label>
+            <input
+              type="text"
+              class="form-control"
+              id="loanterm"
+              name="loanterm"
+              placeholder="Loan Term"
+              autofocus
+            />
+          </div>
+
+          <h5 class="h5 mb-3 font-weight-normal">Gender</h5>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="gender"
+              id="male"
+              value="Male"
+            />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="gender"
+              id="female"
+              value="Female"
+            />
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+
+          <h5 class="h5 mb-3 font-weight-normal">Marital Status</h5>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="married"
+              id="yes"
+              value="Yes"
+            />
+            <label class="form-check-label" for="yes">Yes</label>
+          </div>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="married"
+              id="no"
+              value="No"
+            />
+            <label class="form-check-label" for="no">No</label>
+          </div>
+
+          <h5 class="h5 mb-3 font-weight-normal">Educational Qualification</h5>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="education"
+              id="graduate"
+              value="Graduate"
+            />
+            <label class="form-check-label" for="graduate">Graduate</label>
+          </div>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="education"
+              id="not_graduate"
+              value="Not_graduate"
+            />
+            <label class="form-check-label" for="not_graduate"
+              >Not graduate</label
+            >
+          </div>
+
+          <h5 class="h5 mb-3 font-weight-normal">Employment:</h5>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="selfemployed"
+              id="yes"
+              value="Yes"
+            />
+            <label class="form-check-label" for="yes">Yes</label>
+          </div>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="selfemployed"
+              id="no"
+              value="No"
+            />
+            <label class="form-check-label" for="no">No</label>
+          </div>
+
+          <h5 class="h5 mb-3 font-weight-normal">Residential Area</h5>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="area"
+              id="urban"
+              value="Urban"
+            />
+            <label class="form-check-label" for="urban">Urban</label>
+          </div>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="area"
+              id="rural"
+              value="Rural"
+            />
+            <label class="form-check-label" for="rural">Rural</label>
+          </div>
+          <div class="form-check form-check-inline pb-4">
+            <input
+              class="form-check-input pb-4"
+              type="radio"
+              name="area"
+              id="semiurban"
+              value="Semiurban"
+            />
+            <label class="form-check-label" for="semiurban">Semi Urban</label>
+          </div>
+          <br /><br />
+          <input
+            class="btn btn-primary"
+            type="submit"
+            value="Check Eligibility"
+          />
+          <br /><br />
+        </form>
+      </div>
+    </body>
+  </div>
+</html>
+{% endblock %}

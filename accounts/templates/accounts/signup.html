@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load staticfiles %}
+<html>
+    <div class="container text-center">
+        {% if error %}
+        {{error}}
+        {% endif %}
+        <br />
+        <br />
+        <div class="container">
+            <h1>Sigh Up!</h1>
+            <form method="POST" action="{% url 'signup' %}">
+                {% csrf_token%}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="username.." required>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" class="form-control" id="password1" name="password1" placeholder="enter password.." required>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Password</label>
+                    <input type="password" class="form-control" id="password2" name="password2" placeholder="retype password" required>
+                </div>
+                <input class="btn btn-primary" type="submit" value="SignUp!"/>
+            </form>
+        </div>
+    </div>
+</html>
+{% endblock %}
